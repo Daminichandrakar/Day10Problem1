@@ -16,5 +16,26 @@ i=0
 for key in ${!Dict[@]}
 do
       array[$i]=${Dict[$key]}
+              i=$(($i+1))
 done
 
+echo ${array[*]}
+
+for((i=${#array[@]};i>0;i--))
+do
+for (( j=1;j<$i;j++ ))
+do
+      if [ ${array[$j-1]} -lt ${array[$j]} ]
+        then
+               temp=${array[$j-1]}
+                  array[j-1]=${array[$j]}
+                    array[j]=$temp
+         else
+                array[j-1]=${array[$j-1]}
+
+
+
+        fi
+done
+done
+echo "array in descending order" ${array[*]}
