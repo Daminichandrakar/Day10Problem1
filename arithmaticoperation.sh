@@ -11,3 +11,10 @@ result4=$(($a%$b+$c))
 
  declare -A Dict
  Dict=( [result1]=$result1 [result2]=$result2 [result3]=$result3 [result4]=$result4 )
+
+i=0
+for key in ${!Dict[@]}
+do
+      array[$i]=${Dict[$key]}
+done
+
